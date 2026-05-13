@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Услуги</title>
+    <style>
+        body {font-family:Arial; padding:30px;}
+        table {border-collapse:collapse; width:500px}
+        th,td {border:1px solid #ddd; padding: 8px 12px; text-align: left}
+        th {background: #f0f0f0}
+        input {padding: 6px 10px; margin-right: 8px; border: 1px solid #ccc; border-radius: 4px}
+        button {padding: 6px 16px; background: #7c4daa; color: white; border: none; border-radius: 4px; cursor: pointer}
+
+
+    </style>
+</head>
+<body>
+    <p>
+        <a href="/">
+            На главную страницу
+        </a>
+    </p>
+    <h1>
+        Услуги салона
+    </h1>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        {%for service in services%}
+        <tr>
+            <td>{{service.name}}</td>
+            <td>{{service.price}}</td>
+        </tr>
+        {%else%}
+        <tr>
+            <td>Услуг пока нет</td>
+        </tr>
+        {% endfor %}
+    </table>
+<h2>Добавить услугу</h2>
+<form action="/services/add" method="post">
+    <input type="text" name="name" placeholder="Название услуги" required>
+    <input type="number" name="price" placeholder="Цена в рублях" required>
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>

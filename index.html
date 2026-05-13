@@ -1,0 +1,28 @@
+{%extends "base.html"%}
+{%block content%}
+<h1>Главная</h1>
+<div style="display:flex; gap:16px">
+    <a href="/clients">
+        <div style="font-size:32px; font-weight:bold">
+            {{clients_count}}
+        </div>
+    </a>
+
+</div>
+{%if churn_risk%}
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Телефон</th>
+        <th>Дней без визита</th>
+    </tr>
+    {%for client in churn_risk%}
+    <tr>
+        <td>{{client.name}}</td>
+        <td>{{client.phone}}</td>
+        <td>{{client.last_visit_days}}</td>
+    </tr>
+    {%endfor%}
+</table>
+{%endif%}
+{%endblock%}
