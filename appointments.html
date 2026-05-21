@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Записи</title>
-    <style>
-        body {font-family:Arial; padding:30px;}
-        table {border-collapse:collapse; width:500px}
-        th,td {border:1px solid #ddd; padding: 8px 12px; text-align: left}
-        th {background: #f0f0f0}
-        input,select {padding: 6px 10px; margin-right: 8px; border: 1px solid #ccc; border-radius: 4px}
-        button {padding: 6px 16px; background: #7c4daa; color: white; border: none; border-radius: 4px; cursor: pointer}
-        .form-row {display:flex; gap:8px; flex-wrap; wrap; align-items: flex-end}
-    </style>
-</head>
+{%extends "base.html"%}
+{%block content%}
+<h1>Записи</h1>
 <body>
-    <p>
-        <a href="/">
-            На главную страницу
-        </a>
-    </p>
-    <h1>
-        Записи
-    </h1>
     <table>
         <tr>
             <th>Дата</th>
@@ -62,4 +42,4 @@
         </div>
     </form>
 </body>
-</html>
+{%endblock%}
