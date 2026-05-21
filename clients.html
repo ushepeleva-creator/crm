@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Clients</title>
-    <style>
-        body {font-family:Arial; padding:30px;}
-        table {border-collapse:collapse; width:500px}
-        th,td {border:1px solid #ddd; padding: 8px 12px; text-align: left}
-        th {background: #f0f0f0}
-        input {padding: 6px 10px; margin-right: 8px; border: 1px solid #ccc; border-radius: 4px}
-        button {padding: 6px 16px; background: #7c4daa; color: white; border: none; border-radius: 4px; cursor: pointer}
-
-
-    </style>
-</head>
-<body>
+{%extends "base.html"%}
+{%block content%}
 <h1>Клиенты салона</h1>
 <table>
     <tr>
         <th>Имя</th>
         <th>Телефон</th>
+        <th>Дней без визита</th>
+        <th>Лояльность</th>
     </tr>
     {% for client in clients %}
     <tr>
@@ -29,6 +16,18 @@
         <td>
             {{client.phone}}
         </td>
+        <td>
+            {{client.last_visit_days}}
+        </td>
+        <td>
+            {% if client.loyalty_score>=70 %}
+            <span style="color:green;font-weight:bold">{{client.loyalty_score}}</span>
+            {% elif client.loyalty_score>=40 %}
+            <span style="color:orange">{{client.loyalty_score}}</span>
+            {% else %}
+            <span style="color:red">{{client.loyalty_score}}</span>
+            {% endif %}
+        </td>
     </tr>
     {% endfor %}
 </table>
@@ -36,7 +35,9 @@
 <form action="/clients/add" method="post">
     <input type="text" name="name" placeholder="Имя" required>
     <input type="text" name="phone" placeholder="Телефон" required>
+    <input type="number" name="visits" placeholder="Количество визитов" min="0">
+    <input type="number" name="avg_spent" placeholder="Средний чек" min="0">
+    <input type="number" name="last_visit_days" placeholder="Дней без визита" min="0">
     <button type="submit">Добавить</button>
 </form>
-</body>
-</html>
+{%endblock%}
