@@ -1,15 +1,41 @@
 {%extends "base.html"%}
 {%block content%}
 <h1>Главная</h1>
-<div style="display:flex; gap:16px">
-    <a href="/clients">
-        <div style="font-size:32px; font-weight:bold">
-            {{clients_count}}
+<div style="display:flex; gap:16px; margin-bottom: 30px">
+    <a href="/clients" style="text-decoration: none; flex: 1">
+        <div style="background:white; border-radius: 8px; padding: 24px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.1)">
+            <div style="font-size:32px; font-weight:bold; color: CornflowerBlue">
+                {{clients_count}}
+            </div>
+            <div style="color: CornflowerBlue; margin-top: 6px">
+                клиентов
+            </div>
+        </div>
+    </a>
+    <a href="/appointments" style="text-decoration: none; flex: 1">
+        <div style="background:white; border-radius: 8px; padding: 24px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.1)">
+            <div style="font-size:32px; font-weight:bold; color: CornflowerBlue">
+                {{appointments_count}}
+            </div>
+            <div style="color: CornflowerBlue; margin-top: 6px">
+                записей
+            </div>
+        </div>
+    </a>
+    <a href="/services" style="text-decoration: none; flex: 1">
+        <div style="background:white; border-radius: 8px; padding: 24px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.1)">
+            <div style="font-size:32px; font-weight:bold; color: CornflowerBlue">
+                {{services_count}}
+            </div>
+            <div style="color: CornflowerBlue; margin-top: 6px">
+                услуг
+            </div>
         </div>
     </a>
 
 </div>
 {%if churn_risk%}
+<h2>Клиенты в зоне риска</h2>
 <table>
     <tr>
         <th>Имя</th>
